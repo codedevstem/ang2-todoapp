@@ -29,9 +29,25 @@ var TodosService = (function () {
         return this._http.get('/api/todos')
             .map(function (res) { return res.json(); });
     };
+    TodosService.prototype.saveTodo = function (todo) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]();
+        headers.append('Content-Type', 'application/json');
+        return this._http.post('/api/todo', JSON.stringify(todo), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    TodosService.prototype.updateTodo = function (todo) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]();
+        headers.append('Content-Type', 'application/json');
+        return this._http.put('/api/todo/' + todo._id, JSON.stringify(todo), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    TodosService.prototype.deleteTodo = function (id) {
+        return this._http.delete('/api/todo/' + id)
+            .map(function (res) { return res.json(); });
+    };
     TodosService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object])
     ], TodosService);
     return TodosService;
     var _a;
@@ -194,14 +210,74 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var TodosComponent = (function () {
-    function TodosComponent(TodosService) {
-        this.TodosService = TodosService;
-        this.todos = [];
+    function TodosComponent(_todosService) {
+        this._todosService = _todosService;
     }
     TodosComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.TodosService.getTodos().subscribe(function (todos) {
+        this.todos = [];
+        this._todosService.getTodos().subscribe(function (todos) {
             _this.todos = todos;
+        });
+    };
+    TodosComponent.prototype.addTodo = function (event, todoText) {
+        var _this = this;
+        var result;
+        var newTodo = {
+            text: todoText.value,
+            isCompleted: false
+        };
+        result = this._todosService.saveTodo(newTodo);
+        result.subscribe(function (x) {
+            _this.todos.push(newTodo);
+            todoText.value = "";
+        });
+    };
+    TodosComponent.prototype.setEditState = function (todo, state) {
+        if (state) {
+            todo.isEditMode = state;
+        }
+        else {
+            delete todo.isEditMode;
+        }
+    };
+    TodosComponent.prototype.updateStatus = function (todo) {
+        var _todo = {
+            _id: todo._id,
+            text: todo.text,
+            isCompleted: !todo.isCompleted
+        };
+        this._todosService.updateTodo(_todo)
+            .subscribe(function (data) {
+            todo.isCompleted = !todo.isCompleted;
+        });
+    };
+    TodosComponent.prototype.updateTodoText = function (event, todo) {
+        var _this = this;
+        if (event.which === 13) {
+            todo.text = event.target.value;
+            var _todo = {
+                _id: todo._id,
+                text: todo.text,
+                isCompleted: todo.isCompleted
+            };
+            this._todosService.updateTodo(_todo)
+                .subscribe(function (data) {
+                _this.setEditState(todo, false);
+            });
+        }
+    };
+    TodosComponent.prototype.deleteTodo = function (todo) {
+        var todos = this.todos;
+        this._todosService.deleteTodo(todo._id)
+            .subscribe(function (data) {
+            if (data.n == 1) {
+                for (var i = 0; i < todos.length; i++) {
+                    if (todos[i]._id == todo._id) {
+                        todos.splice(i, 1);
+                    }
+                }
+            }
         });
     };
     TodosComponent = __decorate([
@@ -237,14 +313,14 @@ var environment = {
 /***/ 659:
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>"
+module.exports = "    <nav class=\"navbar navbar-inverse\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand\" href=\"#\">MEAN-Todos App</a>\n        </div>\n      </div>\n    </nav>\n\n    <div class=\"container\">\n      <div class=\"row\">\n       <div class=\"col-sm-8\">\n        <router-outlet></router-outlet>\n       </div>\n      </div>\n\n    </div><!-- /.container -->\n\n<router-outlet></router-outlet>"
 
 /***/ }),
 
 /***/ 660:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"add-todo-form text-center col-sm-10 col-sm-offset-1\">\n  <h1>Add Todo</h1>\n  <div class=\"form-group\">\n    <input type=\"text\" class=\"form-control input-lg\" aria-placeholder=\"Add Todo...\" autofocus #todoText>\n    <br>\n    <button class=\"btn btn-primary btn-block\">Create</button>\n  </div>\n</div>\n<div class=\"todo-list\">\n  <div class=\"row col-sm-10 col-sm-offset-1\" *ngFor=\"let todo of todos\">\n    <div class=\"col-sm-1\">\n      <input type=\"checkbox\">\n    </div>\n    <div class=\"col-sm-7\">\n      {{todo.text}}\n    </div>\n    <div class=\"col-sm-4\">\n      <input type=\"button\" class=\"btn btn-danger pull-right\" value=\"Delete\">\n      <input type=\"button\" class=\"btn btn-primary pull-right\" value=\"Edit\">\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"add-todo-form text-center col-sm-10 col-sm-offset-1\">\n  <h1>Add Todo</h1>\n  <div class=\"form-group\">\n    <input type=\"text\" class=\"form-control input-lg\" aria-placeholder=\"Add Todo...\" autofocus #todoText>\n    <br>\n    <button (click)=\"addTodo($event, todoText)\" class=\"btn btn-primary btn-block\">Create</button>\n  </div>\n</div>\n<div class=\"todo-list\">\n  <div class=\"row col-sm-10 col-sm-offset-1\" *ngFor=\"let todo of todos\">\n    <div class=\"col-sm-1\">\n      <input type=\"checkbox\" [checked]=\"todo.isCompleted\" (click)=\"updateStatus(todo)\">\n    </div>\n    <div class=\"col-sm-7\">\n      <span [class.hidden]=\"todo.isEditMode\">{{todo.text}}</span>\n      <input type=\"text\"[class.hidden]=\"!todo.isEditMode\" [value]=\"todo.text\" (keypress)=\"updateTodoText($event, todo)\">\n      <input type=\"button\" [class.hidden]=\"!todo.isEditMode\" value=\"Cancel\" (click)=\"setEditState(todo, false)\" class=\"btn btn-warning\">\n    </div>\n    <div class=\"col-sm-4\">\n      <input (click)=\"deleteTodo(todo)\" type=\"button\" class=\"btn btn-danger pull-right\" value=\"Delete\">\n      <input [class.disabled]=\"todo.isCompleted\" (click)=\"setEditState(todo, true)\"type=\"button\" class=\"btn btn-primary pull-right\" value=\"Edit\">\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 

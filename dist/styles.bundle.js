@@ -35,7 +35,7 @@ exports = module.exports = __webpack_require__(657)();
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n", ""]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n.btns input {\n margin-right:5px;\n margin-bottom: 3px;\n}", ""]);
 
 // exports
 
