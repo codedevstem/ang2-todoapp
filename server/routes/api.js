@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://admin:adminpass@ds141368.mlab.com:41368/todoappstem',['todos']);
 
@@ -89,5 +89,4 @@ router.delete('/todo/:id', function(req, res, next){
         }
     });
 });
-
 module.exports = router;

@@ -1,11 +1,11 @@
 import { browser, element, by } from 'protractor';
 
-export class TodoappPage {
+export class TodoMeanAppPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('todo-root h1')).getText();
+    return element(by.css('app-root h1')).getText();
   }
 }

@@ -6,9 +6,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
-
-import { TodosService } from './todos.service';
-
+// Define the routes
 const ROUTES = [
   {
     path: '',
@@ -31,7 +29,7 @@ const ROUTES = [
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [TodosService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

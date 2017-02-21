@@ -1,10 +1,10 @@
-// Dependencies
+// Get dependencies
 const express = require('express');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 
-// API routes
+// Get our API routes
 const api = require('./server/routes/api');
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Api routes
+// Set our api routes
 app.use('/api', api);
 
 // Catch all other routes and return the index file
