@@ -1,6 +1,46 @@
 webpackJsonp([1,4],{
 
-/***/ 381:
+/***/ 330:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(664);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TodosService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var TodosService = (function () {
+    function TodosService(_http) {
+        this._http = _http;
+    }
+    TodosService.prototype.getTodos = function () {
+        return this._http.get('/api/todos')
+            .map(function (res) { return res.json(); });
+    };
+    TodosService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(), 
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
+    ], TodosService);
+    return TodosService;
+    var _a;
+}());
+//# sourceMappingURL=/home/stem/Projects/angular/ang2-todoapp/src/todos.service.js.map
+
+/***/ }),
+
+/***/ 383:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -9,20 +49,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 381;
+webpackEmptyContext.id = 383;
 
 
 /***/ }),
 
-/***/ 382:
+/***/ 384:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(470);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(471);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(504);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(502);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(505);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(503);
 
 
 
@@ -31,11 +71,11 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["a" /* enableProdMode */])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=/home/stem/Projects/angular/todo-mean-app/src/main.js.map
+//# sourceMappingURL=/home/stem/Projects/angular/ang2-todoapp/src/main.js.map
 
 /***/ }),
 
-/***/ 501:
+/***/ 502:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63,21 +103,22 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=/home/stem/Projects/angular/todo-mean-app/src/app.component.js.map
+//# sourceMappingURL=/home/stem/Projects/angular/ang2-todoapp/src/app.component.js.map
 
 /***/ }),
 
-/***/ 502:
+/***/ 503:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(466);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(490);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(501);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__todos_todos_component__ = __webpack_require__(503);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(307);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__(491);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(502);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__todos_todos_component__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__todos_service__ = __webpack_require__(330);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -88,6 +129,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -122,22 +164,23 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forRoot(ROUTES)
             ],
-            providers: [],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__todos_service__["a" /* TodosService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=/home/stem/Projects/angular/todo-mean-app/src/app.module.js.map
+//# sourceMappingURL=/home/stem/Projects/angular/ang2-todoapp/src/app.module.js.map
 
 /***/ }),
 
-/***/ 503:
+/***/ 504:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__todos_service__ = __webpack_require__(330);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TodosComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -149,26 +192,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var TodosComponent = (function () {
-    function TodosComponent() {
+    function TodosComponent(TodosService) {
+        this.TodosService = TodosService;
+        this.todos = [];
     }
     TodosComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.TodosService.getTodos().subscribe(function (todos) {
+            _this.todos = todos;
+        });
     };
     TodosComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
             selector: 'app-todos',
-            template: __webpack_require__(660),
-            styles: [__webpack_require__(658)]
+            template: __webpack_require__(660)
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__todos_service__["a" /* TodosService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__todos_service__["a" /* TodosService */]) === 'function' && _a) || Object])
     ], TodosComponent);
     return TodosComponent;
+    var _a;
 }());
-//# sourceMappingURL=/home/stem/Projects/angular/todo-mean-app/src/todos.component.js.map
+//# sourceMappingURL=/home/stem/Projects/angular/ang2-todoapp/src/todos.component.js.map
 
 /***/ }),
 
-/***/ 504:
+/***/ 505:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -180,14 +230,7 @@ var TodosComponent = (function () {
 var environment = {
     production: false
 };
-//# sourceMappingURL=/home/stem/Projects/angular/todo-mean-app/src/environment.js.map
-
-/***/ }),
-
-/***/ 658:
-/***/ (function(module, exports) {
-
-module.exports = ""
+//# sourceMappingURL=/home/stem/Projects/angular/ang2-todoapp/src/environment.js.map
 
 /***/ }),
 
@@ -201,17 +244,17 @@ module.exports = "<router-outlet></router-outlet>"
 /***/ 660:
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  todos works!\n</p>\n"
+module.exports = "<div class=\"add-todo-form text-center col-sm-10 col-sm-offset-1\">\n  <h1>Add Todo</h1>\n  <div class=\"form-group\">\n    <input type=\"text\" class=\"form-control input-lg\" aria-placeholder=\"Add Todo...\" autofocus #todoText>\n    <br>\n    <button class=\"btn btn-primary btn-block\">Create</button>\n  </div>\n</div>\n<div class=\"todo-list\">\n  <div class=\"row col-sm-10 col-sm-offset-1\" *ngFor=\"let todo of todos\">\n    <div class=\"col-sm-1\">\n      <input type=\"checkbox\">\n    </div>\n    <div class=\"col-sm-7\">\n      {{todo.text}}\n    </div>\n    <div class=\"col-sm-4\">\n      <input type=\"button\" class=\"btn btn-danger pull-right\" value=\"Delete\">\n      <input type=\"button\" class=\"btn btn-primary pull-right\" value=\"Edit\">\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
-/***/ 678:
+/***/ 679:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(382);
+module.exports = __webpack_require__(384);
 
 
 /***/ })
 
-},[678]);
+},[679]);
 //# sourceMappingURL=main.bundle.map
